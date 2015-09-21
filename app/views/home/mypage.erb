@@ -1,0 +1,150 @@
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+</head>
+<br><br><br><br>
+
+<!--사이드 로그인창 시작 -->
+    <div class ="container-fluid heading"  style ="background-color:#F5F5F5;">
+        <div class ="row">
+            <div class ="col-md-3 col-sm-3 col-lg-3">
+                <div class="panel panel-default" style="border: 3px solid #B0AEAA; border-radius:3%">
+                    <div class="panel-body">
+                        
+                           
+                            
+                            <% if current_user.nil? %>
+                                <center>
+                                    <a href="/users/sign_in" class="btn btn-outlined btn-primary" style ="margin-top: 10px; padding-left: 40px;padding-right: 40px ;" method="POST" value="LOGIN">Log in</a>
+                                    <p><a href="/users/sign_up" class="btn btn-outlined btn-success" style ="margin-top: 10px;padding-left: 40px;padding-right: 40px ;">Sign up</a></p>
+                                </center>
+                            <% else %>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-lg-4">
+                                        <img style="height:100px;" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRhTeyyuPByQZy0yHP-18Rc6jw-jXQ5VginV5a6z1_egTTJM7QURg" />
+                                    </div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8">
+                                        <h3><%= current_user.nickname %></h3>
+                                        <p>직업<span style="color:grey">ㅣ</span><%= current_user.job %></p>
+                                        <p>키<span style="color:grey">ㅣ</span><%= current_user.tall %> &nbsp;&nbsp; 
+                                         나이<span style="color:grey">ㅣ</span><%= current_user.age %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align:center">
+                                  <a href="/users/edit">
+                                  <button class="btn btn-outlined btn-success" style="width:120px">
+                                    정보수정
+                                  </button>
+                                  </a>
+                                  <a href="/users/sign_out">
+                                  <button class="btn btn-outlined btn-primary" style="width:120px">
+                                    로그아웃
+                                  </button>
+                                  </a>
+                                </div>
+                            <% end %>
+                    </div>                        
+                </div>
+    <!-- 사이드 로그인창 종료 -->
+    <!-- 사이드바 시작 -->
+                <div class="panel panel-default"  style="border: 3px solid #877777; border-radius:3%">
+                    <div class="panel-body">
+                        <div class="profile-sidebar">
+        				    <div class="profile-usermenu">
+        					    <ul class="nav" style="font-size:15px">
+        						    <li class="active">
+        							    <a href="/" style="color:black">
+        							    <i><img style="height:30px;" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRvzs04uY8Hsm_8OkL_EYmZRBmbyUtsDC5iyeWJxUJKwb6ZVhVxOg" /></i>
+        							    HOME</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/helpview" style="color:#C26413;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqYJOKeW0mjwbyD3DTves9_T0siEy7qRwXtS2YcUsdXAMMX8dSiA" /></i>
+            							오왼패션</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/dailyview" style="color:#CD9E48;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo_62jxykB0vesMa2-wLD-I0_OdwfLHMkPlhi4DZQUNBe86_I6" /></i>
+            							데일리룩</a>
+            						</li>
+            						<% if current_user.nil? %>
+            						<% else %>
+            						<li>
+            							<a href="/home/mypage/<%= current_user.id %>" style="color:#841748;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR9am2o0O8xCVJ9mSC1yxK39OqpQJ6Ki00y35VnfRQoL04eJhh6rYpFsQ" /></i>
+            							마이페이지</a>
+            						</li>
+            						<% end %>
+            					</ul>
+        				    </div>
+                        </div>
+                    </div>
+    		    </div>
+            </div>
+    <!-- 사이드바 종료 -->
+
+
+        <div class ="col-md-9 col-sm-12 col-lg-9" style ="border-left:10px;">
+            <div class="panel panel-default" style="width:200px">
+                <div class="panel-body" style="border: 2px solid #EBCCB1">
+                    내가 올린 '<span style="color:#C26413">뭐가나아</span>' 게시글 
+                </div>
+            </div>
+            <div class ="row" style="margin-left: 0px; margin-right: 15px;">
+                <% @helpcontents.each do |c| %>
+                    <a href="/home/detail/<%=c.id%>">
+                        <div class ="col-md-3" style ="padding-left:1px; padding-right:1px;">
+                            <div class="thumbnail" style ="height: 320px;">
+                                <img src="<%= c.my_image1 %>" style="height: 200px; width:239px;">
+                                <div class="caption">
+                                    <h4><%= c.title %></h4>
+                                    <%  a = c.hashtag.to_s %>
+                                    <% if c.hashtag.length > 60 %>
+                                        <% expose_hashtag = a[0..60]+'...' %>
+                                    <% else %>
+                                        <% expose_hashtag = c.hashtag %>
+                                    <% end %>
+                                    <p><%= expose_hashtag %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <% end %>
+            </div>
+            <div class="panel panel-default" style="width:200px">
+                <div class="panel-body" style="border: 2px solid #E6CEA3">
+                    내가 올린 '<span style="color:#A17A32">데일리룩</span>' 게시글 
+                </div>
+            </div>
+            <div class ="row">
+                <% @dailycontents.each do |c| %>
+                    <a href="/home/dailydetail/<%=c.id%>">
+                        <div class ="col-md-3" style ="padding-left:1px; padding-right:1px;">
+                            <div class="thumbnail" style ="height: 320px;">
+                                <img src="<%= c.my_image4 %>" style="height: 200px; width:239px;">
+                                <div class="caption">
+                                    <h4><%= c.title %></h4>
+                                    <%  a = c.hashtag.to_s %>
+                                    <% if c.hashtag.length > 60 %>
+                                        <% expose_hashtag = a[0..60]+'...' %>
+                                    <% else %>
+                                        <% expose_hashtag = c.hashtag %>
+                                    <% end %>
+                                    <p><%= expose_hashtag %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <% end %>
+            </div>
+		</div>
+	</div>
+</div>
+	    
+
+
+
+<!--2. 내가 올린 글 확인하기 ( 살려주세요, 데일리룩 )-->

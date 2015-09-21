@@ -1,0 +1,99 @@
+<div class = "container">
+<div class ="row">
+    <br><br><br><br>
+    <div class ="col-md-3"></div>
+    <div class ="col-md-6">
+        <%= form_tag "/uploadhelp/helpmodify2/" + @helpcontent.id.to_s, enctype: "multipart/form-data", method: "post" do %>
+        <!-- 스타일 -->
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                옷 사진 수정은 불가능합니다. 글 삭제후 다시 업로드해주세용
+            </h3>
+            <div class="form-group">
+                <h3>
+                    <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                    제목을 적어라 어좁이 꽁치들아
+                </h3>
+                <input type="text" class="form-control" name="title" value="<%= @helpcontent.title %>">
+            </div>
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                본인이 주로 입는 스타일은?
+            </h3>
+
+            <h5>('#' 해시태그로 작성해주세요 )</h5>
+            <div class="form-group">
+                <input type="text" class="form-control" name="hashtag" value="<%= @helpcontent.hashtag %>">
+            </div>
+        <!-- 스타일 끗 신체 사이즈 시작 -->
+           <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                신체 사이즈를 입력해주세요 
+            </h3>
+            <div class="form-group">
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <input type="number" class="form-control" name="tall" value="<%= @helpcontent.tall %>">
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <input type="number" class="form-control" name="kg" value="<%= @helpcontent.kg %>">
+                    </div>
+                </div>
+                        <div class ="row" style ="height:17px;"></div>
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <select class="form-control" id="upsize" name ="upsize">
+                            <option value="<%= @helpcontent.upsize %>"><%= @helpcontent.upsize %></option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>   
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <select class="form-control" id="downsize" name ="downsize">
+                            <option value="<%= @helpcontent.downsize %>"><%= @helpcontent.downsize %></option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            
+                        </select>  
+                    </div>
+                
+                </div>
+                
+            </div>
+        <!-- 신체 사이즈 종료 -->
+        <!-- 옷 참고 사항 시작 -->
+            <div class="form-group">
+               <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                옷을 고를 때 기타 참고사항을 적어주세요  
+                </h3>
+                <textarea class="form-control" name="explain" value ="<%= @helpcontent.explain %>"id="comment" rows ="6"></textarea>
+          
+            </div>
+            <br>
+            <center>
+                <button class="btn btn-success">등록하기</button>
+                <a href ="/" class="btn btn-warning">돌아가기</a>
+            </center>
+        <% end %>
+    </div>
+    <div class ="col-md-3"></div>
+
+
+</div> <!-- row end -->
+</div> <!-- container end -->
+

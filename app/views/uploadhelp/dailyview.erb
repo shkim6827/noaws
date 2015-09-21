@@ -1,0 +1,141 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/detail.css">
+</head>
+<br>
+<br>
+<br><br>
+<!--사이드 로그인창 시작 -->
+    <div class ="container-fluid heading"  style ="background-color:#F5F5F5;">
+        <div class ="row">
+            <div class ="col-md-3 col-sm-3 col-lg-3">
+                <div class="panel panel-default" style="border: 3px solid #B0AEAA; border-radius:3%">
+                    <div class="panel-body">
+                        
+                           
+                            
+                            <% if current_user.nil? %>
+                                <center>
+                                    <a href="/users/sign_in" class="btn btn-outlined btn-primary" style ="margin-top: 10px; padding-left: 40px;padding-right: 40px ;" method="POST" value="LOGIN">Log in</a>
+                                    <p><a href="/users/sign_up" class="btn btn-outlined btn-success" style ="margin-top: 10px;padding-left: 40px;padding-right: 40px ;">Sign up</a></p>
+                                </center>
+                            <% else %>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-lg-4">
+                                        <img style="height:100px;" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRhTeyyuPByQZy0yHP-18Rc6jw-jXQ5VginV5a6z1_egTTJM7QURg" />
+                                    </div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8">
+                                        <h3><%= current_user.nickname %></h3>
+                                        <p>직업<span style="color:grey">ㅣ</span><%= current_user.job %></p>
+                                        <p>키<span style="color:grey">ㅣ</span><%= current_user.tall %> &nbsp;&nbsp; 
+                                         나이<span style="color:grey">ㅣ</span><%= current_user.age %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align:center">
+                                  <a href="/users/edit">
+                                  <button class="btn btn-outlined btn-success" style="width:120px">
+                                    정보수정
+                                  </button>
+                                  </a>
+                                  <a href="/users/sign_out">
+                                  <button class="btn btn-outlined btn-primary" style="width:120px">
+                                    로그아웃
+                                  </button>
+                                  </a>
+                                </div>
+                            <% end %>
+                    </div>                        
+                </div>
+    <!-- 사이드 로그인창 종료 -->
+    <!-- 사이드바 시작 -->
+                <div class="panel panel-default"  style="border: 3px solid #877777; border-radius:3%">
+                    <div class="panel-body">
+                        <div class="profile-sidebar">
+        				    <div class="profile-usermenu">
+        					    <ul class="nav" style="font-size:15px">
+        						    <li class="active">
+        							    <a href="/" style="color:black">
+        							    <i><img style="height:30px;" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRvzs04uY8Hsm_8OkL_EYmZRBmbyUtsDC5iyeWJxUJKwb6ZVhVxOg" /></i>
+        							    HOME</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/helpview" style="color:#C26413;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqYJOKeW0mjwbyD3DTves9_T0siEy7qRwXtS2YcUsdXAMMX8dSiA" /></i>
+            							오왼패션</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/dailyview" style="color:#CD9E48;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo_62jxykB0vesMa2-wLD-I0_OdwfLHMkPlhi4DZQUNBe86_I6" /></i>
+            							데일리룩</a>
+            						</li>
+            						<% if current_user.nil? %>
+            						<% else %>
+            						<li>
+            							<a href="/home/mypage/<%= current_user.id %>" style="color:#841748;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR9am2o0O8xCVJ9mSC1yxK39OqpQJ6Ki00y35VnfRQoL04eJhh6rYpFsQ" /></i>
+            							마이페이지</a>
+            						</li>
+            						<% end %>
+            					</ul>
+        				    </div>
+                        </div>
+                    </div>
+    		    </div>
+            </div>
+    <!-- 사이드바 종료 -->
+        <div class ="col-md-9" style ="padding-left:1px; padding-right:1px;">
+            <div class="fluid">
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-8" style="margin-left:-10px">
+                        <p style="margin-top:40px"><span style="font-size:20px">'<span style="color:#C6953A;">데일리룩</span>'</span>에서 오늘의 다양한 스타일을 감상해보세요!</p>
+                    </div>
+                    <div class="col-md-2">
+                        <% if current_user.nil? %>
+                        
+                        <% else %>
+                        <a href="/uploadhelp/daily"><button type="button" class="btn btn-success btn-lg btn3d" style="margin-left:100%;">룩 자랑&nbsp;<span class="glyphicon glyphicon-ok"></span></button></a>
+                        <% end %> 
+                    </div>
+                    <br><br>&nbsp;<hr>
+                </div>    
+                </div>
+            </div>
+        
+            <div class ="row" style="margin-left: 0px; margin-right: 15px;">
+            <% @u_ps.each do |u_p| %>
+                <div class ="col-md-3" style ="padding:5px;">
+                    <div class="cuadro_intro_hover " style="background-color:#cccccc; border-top-right-radius: 3%; border-top-left-radius: 3%;">
+						<p style="text-align:center;">
+							<img src="<%= u_p[:post].my_image4 %>" style="height: 320px; width:100%; border-top-right-radius: 3%; border-top-left-radius: 3%;" class="img-responsive" alt="">
+						</p>
+						<div class="caption">
+							<div class="blur" style="margin-top:12px"></div>
+							<div class="caption-text">
+								    <p style="border-top:2px solid white; border-bottom:2px solid white; padding:10px; color:#EDEDED"><%= u_p[:user].job %>, <%= u_p[:user].age %>세</p>
+								<div style="color:#EDEDED; padding:5px;">
+                                    
+    								<%  a = u_p[:post].hashtag.to_s %>
+                                    <% if u_p[:post].hashtag.length > 60 %>
+                                        <% expose_hashtag = a[0..60]+'...' %>
+                                    <% else %>
+                                        <% expose_hashtag = u_p[:post].hashtag %>
+                                    <% end %>
+                                    <p><%= expose_hashtag %></p>
+                                </div><br>
+								<a class="btn btn-warning" href="/home/dailydetail/<%= u_p[:post].id%>"><span class="glyphicon glyphicon-plus">DETAIL</span></a>
+							</div>
+						</div>
+					</div>
+                </div>
+            
+            <% end %>
+            </div>
+            <div class ="row">
+            <center><%= will_paginate @posts %></center>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class ="container">
+    <div class ="row">
+        <div class ="col-md-3"></div>
+        <div class ="col-md-6">
+            <h1>해시태그로 글 보기!</h1>
+            <!-- 해시태그 모음 시작 -->
+            <% @helpdata.each do |h| %>
+                <% a =  h.hashtag.split('#') %> <!-- 해쉬태그 리스트, 첫번째는 무조건 빈칸 -->
+                <% listlength = a.length %>
+                <% arr = Array(1..listlength-1)%> <!-- 1,2,3,4,리스트의 길이 -->
+            
+                <% arr.each do |r| %>
+                    <a href = "/home/detail/<%= h.id %>"><%= '#'+a[r] %></a>
+                <%end%>
+            <%end%>
+            <!-- 해시태그 모음 종료 -->
+        </div>
+        <div class ="col-md-3"></div>
+    </div>
+</div>

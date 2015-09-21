@@ -1,0 +1,38 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<br><br><br><br><br>
+
+<h2 style="text-align:center"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;비밀번호를 잊어버리셨나요?</h2><br>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label style="font-size:20px"> 가입하셨던 이메일을 입력해주세요</label>
+        <%= f.email_field :email, autofocus: true, :placeholder => "EMAIL", :class => 'form-control input-lg' %>
+			</div>
+		    <div class="row">
+		      <div class="col-xs-12 col-md-6">
+  		      <%= f.submit "이메일 보내기", :class => 'btn btn-primary btn-block btn-lg' %> 
+  		    </div>
+  		    <div class="col-xs-12 col-md-6">
+  		      <a href="/users/sign_in" class="btn btn-success btn-block btn-lg">로그인하러 가기</a>
+  		    </div>
+  		  </div>  
+  	</div>
+  	<div class="col-md-4"></div>
+	</div>
+</div>
+
+<% end %>
+<%= devise_error_messages! %>
+
+
+  

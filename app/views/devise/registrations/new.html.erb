@@ -1,0 +1,169 @@
+<head>
+  <script src="/js/registration.js" type="text/javascript" charset ="utf-8"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<br><br><br><br><br>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+			<h2>회 원 가 입  <small>정확하게 입력할수록 좋은 정보를 나눌 수 있습니다</small></h2>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="form-group">
+			            <%= f.label :email %><br />
+			            <%= f.email_field :email, autofocus: true, :placeholder => "평소 이용하는 이메일을 입력해주세요", :class => 'form-control input-lg' %>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<%= f.label :password %>
+              <% if @minimum_password_length %>
+              <small>(최소 <%= @minimum_password_length %>자 이상 입력해주세요)</small>
+              <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control input-lg", :placeholder=>"비밀번호를 입력해주세요", :style => "font-family:sans-serif" %>
+					</div>
+				</div>
+				
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<%= f.label :password_confirmation %><br />
+            			<%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control input-lg", :placeholder=>"비밀번호를 다시 입력해주세요", :style => "font-family:sans-serif" %>
+					</div>
+				</div>
+	
+		    <div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<%= f.label :username %><br />
+           				<%= f.text_field :username, autofocus: true, :class=>"form-control input-lg", :placeholder=>"이름" %>
+					</div>
+				</div>
+    
+        <div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :nickname %><br />
+           			 <%= f.text_field :nickname, autofocus: true, :class=>"form-control input-lg", :placeholder=>"별명" %>
+					</div>
+				</div>
+   
+       <div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :job %><br />
+           			 <%= f.text_field :job, autofocus: true, :class=>"form-control input-lg", :placeholder=>"직업" %>
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-3 col-md-3">
+					<div class="form-group">
+					 <label>성별</label>
+           			 <select autofocus="autofocus" class="form-control input-lg" placeholder="성별" type="text" value="" name="user[sex]" id="user_sex">
+           			 	<option value="남자">남자</option>
+           			 	<option value="여자">여자</option>
+       			 	 </select>
+					</div>
+				</div>
+    
+				<div class="col-xs-6 col-sm-3 col-md-3">
+					<div class="form-group">
+					 <%= f.label :age %><br />
+           			 <%= f.number_field :age, autofocus: true, :class=>"form-control input-lg", :placeholder=>"나이" %>
+					</div>
+				</div>
+				
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :tall %><br />
+          			 <%= f.number_field :tall, autofocus: true, :class=>"form-control input-lg", :placeholder=>"키(신장)" %>
+					</div>
+				</div>
+				
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :topsize %> <small>(ex. S / M / L)</small><br />
+           			 <%= f.text_field :topsize, autofocus: true, :class=>"form-control input-lg", :placeholder=>"상의 사이즈" %>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :bottomsize %> <small>(ex. 28 / 30)</small><br />
+        			 <%= f.number_field :bottomsize, autofocus: true, :class=>"form-control input-lg", :placeholder=>"하의 사이즈" %>
+					</div>
+  			</div>
+				
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+					 <%= f.label :footsize %><br />
+       				 <%= f.number_field :footsize, autofocus: true, :class=>"form-control input-lg", :placeholder=>"발 사이즈" %>
+					</div>
+				</div>
+      </div>
+      
+			<div class="row">
+				<div class="col-xs-4 col-sm-3 col-md-3">
+					<span class="button-checkbox">
+						<button type="button" class="btn" data-color="info">
+  						I Agree
+						</button>
+            <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+					</span>
+				</div>
+				<div class="col-xs-8 col-sm-9 col-md-9">
+					 <strong class="label label-primary">가입하기</strong>&nbsp;를 누르기 전에, <a href="#" data-toggle="modal" data-target="#t_and_c_m">꼭 읽어주세요!</a>
+					 그리고 이메일, 이름, 별명은 수정이 불가능합니다. 신중하게 결정해주세요.
+				</div>
+			</div>
+			
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+				 <div class="actions">
+            <%= f.submit "가입하기",:class => 'btn btn-primary btn-block btn-lg' %>
+          </div>
+          <% end %>
+      	</div>
+				<div class="col-xs-12 col-md-6"><a href="/users/sign_in" class="btn btn-success btn-block btn-lg">로그인하러 가기</a></div>
+			</div>
+		</form>
+		<%= devise_error_messages! %>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title" id="myModalLabel">꼭 읽어주세요!</h4>
+			</div>
+			<div class="modal-body">
+				<h2 style="text-align:center"><span class="glyphicon glyphicon-ok"></span>&nbsp;가입하시기 전에 아래사항들을 반드시 지킨다고 약속해주세요</h2>
+				<h3>&nbsp;&nbsp;&nbsp;1. 욕을 하지 맙시다.</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;언어습관은 그 사람의 인성과 관련되어 있습니다.</p>
+				<h3>&nbsp;&nbsp;&nbsp;2. 타인을 비방하지 맙시다.</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모든 사람의 개성을 존중해줍시다.</p>
+				<h3>&nbsp;&nbsp;&nbsp;3. 음란하거나 광고와 같은 특수목적에 의한 게시물을 삼가주시기 바랍니다.</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;음란물은 저희 이메일로 수거하겠습니다.ㅎ </p>
+				<h3>&nbsp;&nbsp;&nbsp;4. 적극적으로 패션 환자분들을 돌봐줍시다!</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이 사이트를 만든 사람도 패션고자입니다.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>

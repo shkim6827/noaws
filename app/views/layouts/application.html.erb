@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dr.fashion</title>
+        <meta charset="utf-8">
+        
+        <!-- 부트스트랩 설치한거 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/detail.css"> 
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/index.css"> 
+        <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+M:400" /><!--스마트고딕 폰트 -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/jejugothic.css"/> <!--제주고딕 폰트 -->
+        <!-- 제이쿼리 시작 -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <!-- 제주고딕 폰트 -->
+        
+        <!-- favicon -->
+        <link rel="shortcut icon" href="img/로고4.jpg">
+        <link rel="apple-touch-icon" href="images/로고4.jpg">
+        <link rel="apple-touch-icon" sizes="72x72" href="로고4.jpg">
+        <link rel="apple-touch-icon" sizes="114x114" href="로고4.jpg">
+        <script src="/js/bootstrap.min.js" type="text/javascript" charset ="utf-8"></script>
+        <style>
+         *{font-family: "Jeju Gothic", sans-serif;}
+        </style>
+    </head>
+    <body style ="background-color:#F5F5F5;">
+        <nav class="navbar navbar-findcond navbar-fixed-top">
+            <div class="fluid">
+        		<div class="navbar-header" style="margin-left:10px">
+        		    <a class="navbar-brand" href="/" style="font-size:23px">dr.fashion</a>
+        		</div>
+        		<div class="collapse navbar-collapse" id="navbar">
+        			<ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <% if current_user.nil? %>
+                            <a href="/users/sign_in" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">환영합니다<span class="caret"></span></a>
+    					    <% else %>
+        					<a href="#" style="margin-right: 15px" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=current_user.email %> <span class="caret"></span></a>
+        					<ul class="dropdown-menu" role="menu">
+        						<li><a href="/users/sign_out">로그아웃</a></li>
+
+    					    </ul>
+    					    <% end %>
+    				    </li>
+        			</ul>
+        			<form action ="/home/search" class="navbar-form navbar-right search-form" method ="GET" role="search">
+        				<input type="text" class="form-control" name ="search" placeholder="#해시태그검색"/>
+        				<button type="submit" class="btn btn-default">검색</button>
+        		    </form>
+        		</div>
+        	</div>
+        	
+        </nav> 
+<%= yield %>
+
+<br><br>
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8"><hr></div>
+<div class="col-md-2"></div>
+</div>
+
+<!-- footer -->
+    <div class="footer">
+        <div class="panel-body" style="text-align:center; opacity: 0.5;">
+            <p><a href="/">Home</a><span class="separator"> | </span><a href="/about_us.php">f</a><span class="separator"> | </span><a href="/feedback.php">Feedback</a><span class="separator"> | </span><a href="/site_map.php">Sitemap</a></p>
+            <p>While using this site, you agree to have read and accepted our <a href="/terms_of_service.php">Terms of Service</a> and <a href="/privacy.php">Privacy Policy</a>.</p>
+            <p><a href="/copyright.php">Copyright</a> &copy; 2015-... TechOnTheNet.com. All rights 이남호 박상준 김승회 reserved.</p>
+        </div>
+    </div>
+
+<!-- footer end -->
+
+
+    </body>
+</html>

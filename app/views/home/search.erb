@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<h3>#<%= @search %>로 검색한 결과입니다</h3>
+<% @idlist.each do |id| %>
+
+    <% content = Help.find(id) %>
+    <% a =  content.hashtag.split('#') %> <!-- 해쉬태그 리스트, 첫번째는 무조건 빈칸 -->
+    <% listlength = a.length %>
+    <% arr = Array(1..listlength-1)%> <!-- 1,2,3,4,리스트의 길이 -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% arr.each do |r| %>
+            <a href = "/home/detail/<%= content.id %>"><%= '#'+a[r] %></a>
+        <%end%>
+        </div>
+    </div>
+<% end %>
+<!-- 할 일은 무엇인가?
+
+@helpdata 덩어리에서 하나씩 뽑는다 -->

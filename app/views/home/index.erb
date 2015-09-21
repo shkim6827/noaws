@@ -1,0 +1,367 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class ="container-fluid" style ="background-color:#F5F5F5;">
+        <div class ="row">
+            <br><br><br><br>
+        </div>
+    </div>
+    <!--사이드 로그인창 시작 -->
+    <div class ="container-fluid heading"  style ="background-color:#F5F5F5;">
+        <div class ="row">
+            <div class ="col-md-3 col-sm-3 col-lg-3">
+                <div class="panel panel-default" style="border: 3px solid #B0AEAA; border-radius:3%;">
+                    <div class="panel-body">
+                           <% if current_user.nil? %>
+                                <center>
+                                    <a href="/users/sign_in" class="btn btn-outlined btn-primary" style ="margin-top: 10px; padding-left: 40px;padding-right: 40px ;" method="POST" value="LOGIN">Log in</a>
+                                    <p><a href="/users/sign_up" class="btn btn-outlined btn-success" style ="margin-top: 10px;padding-left: 40px;padding-right: 40px ;">Sign up</a></p>
+                                </center>
+                            <% else %>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-lg-4">
+                                        <img style="height:100px;" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRhTeyyuPByQZy0yHP-18Rc6jw-jXQ5VginV5a6z1_egTTJM7QURg" />
+                                    </div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8">
+                                        <h3><%= current_user.nickname %></h3>
+                                        <p>직업<span style="color:grey">ㅣ</span><%= current_user.job %></p>
+                                        <p>키<span style="color:grey">ㅣ</span><%= current_user.tall %> &nbsp;&nbsp; 
+                                         나이<span style="color:grey">ㅣ</span><%= current_user.age %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align:center">
+                                  <a href="/users/edit">
+                                  <button class="btn btn-outlined btn-success" style="width:120px">
+                                    정보수정
+                                  </button>
+                                  </a>
+                                  <a href="/users/sign_out">
+                                  <button class="btn btn-outlined btn-primary" style="width:120px">
+                                    로그아웃
+                                  </button>
+                                  </a>
+                                </div>
+                            <% end %>
+                            
+                            
+                        
+                    </div>                        
+                </div>
+    <!-- 사이드 로그인창 종료 -->
+    <!-- 사이드바 시작 -->
+                <div class="panel panel-default"  style="border: 3px solid #877777; border-radius:3%;">
+                    <div class="panel-body">
+                        <div class="profile-sidebar">
+        				    <div class="profile-usermenu">
+        					    <ul class="nav" style="font-size:15px">
+        						    <li class="active">
+        							    <a href="/" style="color:black">
+        							    <i><img style="height:30px;" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRvzs04uY8Hsm_8OkL_EYmZRBmbyUtsDC5iyeWJxUJKwb6ZVhVxOg" /></i>
+        							    HOME</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/helpview" style="color:#C26413;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqYJOKeW0mjwbyD3DTves9_T0siEy7qRwXtS2YcUsdXAMMX8dSiA" /></i>
+            							오왼패션</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/dailyview" style="color:#CD9E48;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo_62jxykB0vesMa2-wLD-I0_OdwfLHMkPlhi4DZQUNBe86_I6" /></i>
+            							데일리룩</a>
+            						</li>
+            						<% if current_user.nil? %>
+            						<% else %>
+            						<li>
+            							<a href="/home/mypage/<%= current_user.id %>" style="color:#841748;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR9am2o0O8xCVJ9mSC1yxK39OqpQJ6Ki00y35VnfRQoL04eJhh6rYpFsQ" /></i>
+            							마이페이지</a>
+            						</li>
+            						<% end %>
+            					</ul>
+        				    </div>
+                        </div>
+                    </div>
+    		    </div>
+            </div>
+    <!-- 사이드바 종료 -->
+    <!-- 배너 시작 -->
+            <div class ="col-sm-9 col-md-9 col-lg-9" style ="padding-left: 5px; padding-right: 5px;">
+                <div class ="row" style ="margin-right: 1px; margin-left: -10px">
+                    <div class ="col-md-8 col-sm-8" style = "padding-right: 0px;">
+                                <a href ="https://www.vingle.net/drfashion">
+                                    <img src ="/images/main.jpg" style ="padding-left: 0px;padding-right: 0px;padding-top: 0px; padding-bottom: 10px; width: 95%;height:75%"/>
+                                </a>
+                         
+                    </div>
+    <!-- 배너 종료 -->
+    <!-- 순위태그 시작 -->
+                    <div class ="col-md-4 col-sm-4" style ="padding-left: 0px; padding-right: 0px">
+                        <div class="panel panel-default" style="border: 3px solid #737FA8; padding-right: 15px; margin-right: 10px;">
+                            <div class="panel-body">
+                                <center><h3>최근 해시태그</h3></center>
+                                <center>
+                                <% @helpcontents.each do |h| %>
+                                    <% a = h.hashtag.split('#') %> <!-- 해쉬태그 리스트, 첫번째는 무조건 빈칸 -->
+                                    <% listlength = a.length %>
+                                    <% arr = Array(1..listlength-1)%> <!-- 1,2,3,4,리스트의 길이 -->
+                                    <% arr.each do |r| %>
+                                        <a id ="clickme" href = "/home/detail/<%= h.id %>"><%= '#'+a[r] %></a>
+                                    <%end%>
+                                <% end %>
+                                </center>
+                            </div>
+                        </div> 
+                    </div>
+    <!-- 순위태그 종료 -->
+                </div>
+    <!-- 본문 피드 시작 -->
+        <br>
+        <div class="row">
+        <div class="col-md-9" style="text-align:left">
+        ㅣ오왼패션
+        </div>
+        <div class="col-md-3" style="text-align:right; margin-left:-10px">
+        <a href="/uploadhelp/helpview"><small>>> MORE</small></a>
+        </div>
+        </div>
+        <hr>
+            <!-- 오왼패션 피드 -->
+             <div class ="row" style="margin-right:30px">
+                <% @posts.each_with_index do |h, index| %>
+                    <div class="col-md-3 col-sm-6 col-lg-3" style = "padding-right:0px;">                          
+                        <div class="panel panel-default" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px; height:320px; border-top-left-radius: 5%; border-top-right-radius: 5%;">
+                            <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                <a href="#"><img src="<%= h.my_image1 %>" class="img-responsive" style="height: 200px; width: 100%; border-top-left-radius: 5%; border-top-right-radius: 5%;" data-toggle="modal" data-target="#myModal-<%= index %>"></a>
+                                <div class="producttitle">
+                                    <!-- modal detail 부분 -->
+                                        &nbsp;<%= h.title %>
+                                    <!-- modal detail 끝 -->
+                                    <div class="modal fade" id="myModal-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header" style="text-align:center">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel"><%= h.title %></h4>
+                                          </div>
+                                          <div class="modal-body">
+                                              <!--모달 컨텐츠 시작-->
+                                               <div class="panel-body">
+                                                    <div class ="row">
+                                                        <div class="row">
+                                                            <div class ="col-md-6" style="text-align:center">
+                                                                <div class="panel panel-success" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;border-top-width: 10px;border-bottom-width: 0px;">
+                                                                    <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                                                        <div class="producttitle"><h1>1</h1></div>
+                                                                        <img class="detailshot_main" src="<%= h.my_image1 %>" /><br><br></a>                                                                            
+                                                                        &nbsp;
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class ="col-md-6" style="text-align:center">
+                                                                <div class="panel panel-success" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px; border-top-width: 10px;border-bottom-width: 0px;">
+                                                                    <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                                                        <div class="producttitle"><h1>2</h1></div>
+                                                                        <img class="detailshot_main" src="<%= h.my_image2.url %>" /><br><br>&nbsp;
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class ="col-md-3">
+                                                                <p style="font-size:30px; color:#48B0D0">about</p>
+                                                                <%= h.hashtag%>
+                                                            </div>
+                                                            <div class ="col-md-9">
+                                                                <p style="font-size:30px; color:#48B0D0">고민</p>
+                                                                <%= h.explain%>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 댓글 부분 -->
+                                                <div class="container">
+                                                    <div class ="row">
+                                                        <div class ="col-md-6">
+                                                            
+                                                                <div class="panel panel-default" style="margin-right: 16px;">
+                                                                    <div class="panel-body">
+                                                                      <div class="row">
+                                                                        <div class="col-md-3"></div>
+                                                                        <div class="col-md-6" style="text-align:center">
+                                                                            <a href="/home/detail/<%= h.id %>"><input class="btn icon-btn btn-success" style="text-align:center" type="submit" value="도와주러가기"></a>
+                                                                        </div>
+                                                                        <div class="col-md-3"></div>
+                                                                      </div>    
+                                                                        
+<!-- 댓글 -->
+<!-- <%# if current_user.nil? %>
+<%# else %>
+  <p name="nickname"><%#= current_user.nickname %></p>
+<%# end %>
+</div>
+
+<div class="col-md-6">
+  <%#if current_user.nil? %>
+  <%# else %>
+    <form action="/home/reply" type="POST">
+            <input type ="hidden" name ="help_id" value = "<%#=h.id %>">
+            <input type ="hidden" name = "user_id" value="<%#= current_user.id %>">
+            <input type ="hidden" name ="nickname" value ="<%#=current_user.nickname%>">
+            <textarea type="text" name="comment" style="height: 25px; width: 100%;"></textarea>
+        <div style="text-align:right">
+            <input type="submit" value="REPLY"><br>
+        </div> 
+    </form>
+  <%# end %>
+</div>-->
+<!-- 댓글 끝 -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        <div class="col-md-6"></div>
+                                                    </div>
+                                                </div>
+                                            <!--컨텐츠종료-->
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                
+                                <div class="productprice">
+                                    <div class="pricetext" style="overflow:hidden; height:80px; font-size:12px"><%= h.explain %></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                <% end %>
+            </div>
+            <div class="row">
+                <center>
+                    <small style="font-style:normal;"><%= will_paginate @posts, :class => 'pagination' ,:previous_label => '이전', :next_label => '다음', :style => 'font-style:normal' %></small>
+                </center>
+            </div>
+            <!-- 오왼패션 피드 끝 -->
+            
+            <br>
+            <div class="row">
+                <div class="col-md-9" style="text-align:left">
+                ㅣ데일리룩
+                </div>
+                <div class="col-md-3" style="text-align:right; margin-left:-10px">
+                <a href="/uploadhelp/dailyview"><small>>> MORE</small></a>
+                </div>
+            </div>
+            <hr>
+            <!-- 데일리룩 피드 -->
+              <div class ="row" style="margin-right:30px">
+                    
+                    <% @dailylooks.each_with_index do |h, index| %>
+                        <div class="col-md-3 col-sm-6 col-lg-3" style = "padding-right:0px;">                          
+                            <div class="panel panel-default" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px; height:320px; border-top-left-radius: 5%; border-top-right-radius: 5%;">
+                                <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                    <img src="<%= h.my_image4 %>" class="img-responsive" style="height: 200px; width: 100%; border-top-left-radius: 5%; border-top-right-radius: 5%;" href="#" data-toggle="modal" data-target="#myModal2-<%= index %>">
+                                    <div class="producttitle">
+                                        <!-- modal detail 부분 -->
+                                            &nbsp;<%= h.hashtag %>
+                                        <!-- modal detail 끝 -->
+                                        <div class="modal fade" id="myModal2-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header" style="text-align:center">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel"><%= h.hashtag %></h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                  <!--모달 컨텐츠 시작-->
+                                                   <div class="panel-body">
+                                                        <div class ="row">
+                                                            <div class="row">
+                                                                <div class ="col-md-6" style="text-align:center">
+                                                                    <div class="panel panel-success" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;border-top-width: 10px;border-bottom-width: 0px;">
+                                                                        <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                                                            <div class="producttitle"><h1>1</h1></div>
+                                                                            <img class="detailshot_main" src="<%= h.my_image4 %>" /><br><br></a>                                                                            
+                                                                            &nbsp;
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class ="col-md-6" style="text-align:center">
+                                                                    <div class="panel panel-success" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px; border-top-width: 10px;border-bottom-width: 0px;">
+                                                                        <div class="panel-body" style ="padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;">
+                                                                            <div class="producttitle"><h1>2</h1></div>
+                                                                            <img class="detailshot_main" src="<%= h.my_image4.url %>" /><br><br>&nbsp;
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                                <div class ="col-md-3">
+                                                                    <p style="font-size:30px; color:#48B0D0">who</p>
+                                                                    <%= @usercloud.find(h.user_id).job %>, <%= @usercloud.find(h.user_id).nickname %>
+                                                                    <!--아이디값-->
+                                                                </div>
+                                                                <div class ="col-md-9">
+                                                                    <p style="font-size:30px; color:#48B0D0">#HASHTAG</p>
+                                                                    <%= h.hashtag %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 댓글 부분 -->
+                                                    <div class="container">
+                                                        <div class ="row">
+                                                            <div class ="col-md-6">    
+                                                                <div class="panel panel-default" style="margin-right: 16px;">
+                                                                    <div class="panel-body">
+                                                                      <div class="row">
+                                                                        <div class="col-md-3"></div>
+                                                                        <div class="col-md-6" style="text-align:center">
+                                                                            <a href="/home/dailydetail/<%= h.id %>"><input class="btn icon-btn btn-success" style="text-align:center" type="submit" value="자세히보기"></a>
+                                                                        </div>
+                                                                        <div class="col-md-3"></div>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6"></div>
+                                                        </div>
+                                                    </div>
+                                                <!--컨텐츠종료-->
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    
+                                    <div class="productprice">
+                                        <div class="pricetext" style="overflow:hidden; height:80px; font-size:12px"><%= h.hashtag %></div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    <% end %>
+                    
+                </div>
+                <div class="row">
+                    <center>
+                        <small style="font-style:normal;"><%= will_paginate @dailylooks, :class => 'pagination' ,:previous_label => '이전', :next_label => '다음', :style => 'font-style:normal' %></small>
+                    </center>
+                </div>
+    <!-- 데일리룩 피드 끝-->                
+    <!-- 본문 피드 종료 -->
+            
+    
+            </div>
+        </div>
+    </div>
+    <!-- 바디 종료 --> 
+</body>

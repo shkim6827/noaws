@@ -1,0 +1,124 @@
+<div class = "container">
+<div class ="row">
+    <br><br><br><br>
+    <div class ="col-md-3"></div>
+    <div class ="col-md-6">
+        <%= form_tag "/uploadhelp/help2", enctype: "multipart/form-data", method: "post" do %>
+        <!-- 스타일 -->
+            <input type = "hidden" name ="user_id" value ="<%= current_user.id%>">
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                비교할 옷 사진 두 장을 선택해주세요
+            </h3>
+            <div class ="row">
+                <div class ="col-md-5 col-lg-5">
+                    <span class="btn btn-default btn-file" style ="width:90%">
+                        <input type ="file" name ="image_file1" style="width:170px">
+                    </span>    
+                </div>
+                <div class ="col-md-2 col-lg-2">
+                    <h4>VS</h4>
+                </div>
+                <div class ="col-md-5 col-lg-5">
+                    <span class="btn btn-default btn-file" style ="width:90%">
+                        <input type ="file" name ="image_file2" style="width:170px">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h3>
+                    <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                    고민을 한 줄로 표현해주세요
+                </h3>
+                <input type="text" class="form-control" name="title" placeholder="*필수항목 고민을 한 줄로!">
+            </div>
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                평소 즐겨 입는 스타일은?
+            </h3>
+
+            <h5>('#' 해시태그로 작성해주세요 )</h5>
+            <div class="form-group">
+                <input type="text" class="form-control" name="hashtag" placeholder="*필수항목 #스트릿패션 #깔끔셔츠패션" required>
+            </div>
+        <!-- 스타일 끗 신체 사이즈 시작 -->
+           <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                신체 사이즈를 입력해주세요 
+            </h3>
+            <div class="form-group">
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <input type="number" class="form-control" name="tall" placeholder="*필수항목 숫자만 입력해주세요(cm)" required>
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <input type="number" class="form-control" name="kg" placeholder="*필수항목 숫자만 입력해주세요(kg)" required>
+                    </div>
+                </div>
+                        <div class ="row" style ="height:17px;"></div>
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <select class="form-control" id="upsize" name ="upsize" required>
+                            <option value="none">*필수항목 상의 사이즈</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>   
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <select class="form-control" id="downsize" name ="downsize" required>
+                            <option value="none">*필수항목 하의 사이즈</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            
+                        </select>  
+                    </div>
+                
+                </div>
+                
+            </div>
+        <!-- 신체 사이즈 종료 -->
+        <!-- 옷 참고 사항 시작 -->
+            <div class="form-group">
+               <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                옷을 고를 때 기타 참고사항을 적어주세요  
+                </h3>
+                <textarea class="form-control" name="explain" placeholder ="*필수항목 '어깨가 넓은 편이에요' / '정장같은 옷은 잘 안입어요' / ..." id="comment" rows ="6" required></textarea>
+          
+            </div>
+            <br>
+            <center>
+                <button class="btn btn-success">등록하기</button>
+                <a href ="/" class="btn btn-warning">돌아가기</a>
+            </center>
+        <% end %>
+    </div>
+    <div class ="col-md-3"></div>
+
+
+</div> <!-- row end -->
+</div> <!-- container end -->

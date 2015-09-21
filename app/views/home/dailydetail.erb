@@ -1,0 +1,321 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="/js/dailydetail.js"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/dailydetail.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/detail.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/reply.css"> 
+  
+</head>
+<br>
+<br>
+<br>
+<br>
+<!--사이드 로그인창 시작 -->
+<div class ="container-fluid heading"  style ="background-color:#F5F5F5;">
+    <div class ="row">
+        <div class ="col-md-3 col-sm-3 col-lg-3">
+                <div class="panel panel-default" style="border: 3px solid #B0AEAA; border-radius:3%">
+                    <div class="panel-body">
+                        
+                           
+                            
+                            <% if current_user.nil? %>
+                                <center>
+                                    <a href="/users/sign_in" class="btn btn-outlined btn-primary" style ="margin-top: 10px; padding-left: 40px;padding-right: 40px ;" method="POST" value="LOGIN">Log in</a>
+                                    <p><a href="/users/sign_up" class="btn btn-outlined btn-success" style ="margin-top: 10px;padding-left: 40px;padding-right: 40px ;">Sign up</a></p>
+                                </center>
+                            <% else %>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-lg-4">
+                                        <img style="height:100px;" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRhTeyyuPByQZy0yHP-18Rc6jw-jXQ5VginV5a6z1_egTTJM7QURg" />
+                                    </div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8">
+                                        <h3><%= current_user.nickname %></h3>
+                                        <p>직업<span style="color:grey">ㅣ</span><%= current_user.job %></p>
+                                        <p>키<span style="color:grey">ㅣ</span><%= current_user.tall %> &nbsp;&nbsp; 
+                                         나이<span style="color:grey">ㅣ</span><%= current_user.age %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align:center">
+                                  <a href="/users/edit">
+                                  <button class="btn btn-outlined btn-success" style="width:120px">
+                                    정보수정
+                                  </button>
+                                  </a>
+                                  <a href="/users/sign_out">
+                                  <button class="btn btn-outlined btn-primary" style="width:120px">
+                                    로그아웃
+                                  </button>
+                                  </a>
+                                </div>
+                            <% end %>
+                    </div>                        
+                </div>
+    <!-- 사이드 로그인창 종료 -->
+    <!-- 사이드바 시작 -->
+                <div class="panel panel-default"  style="border: 3px solid #877777; border-radius:3%">
+                    <div class="panel-body">
+                        <div class="profile-sidebar">
+        				    <div class="profile-usermenu">
+        					    <ul class="nav" style="font-size:15px">
+        						    <li class="active">
+        							    <a href="/" style="color:black">
+        							    <i><img style="height:30px;" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRvzs04uY8Hsm_8OkL_EYmZRBmbyUtsDC5iyeWJxUJKwb6ZVhVxOg" /></i>
+        							    HOME</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/helpview" style="color:#C26413;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqYJOKeW0mjwbyD3DTves9_T0siEy7qRwXtS2YcUsdXAMMX8dSiA" /></i>
+            							오왼패션</a>
+            						</li>
+            						<li>
+            							<a href="/uploadhelp/dailyview" style="color:#CD9E48;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo_62jxykB0vesMa2-wLD-I0_OdwfLHMkPlhi4DZQUNBe86_I6" /></i>
+            							데일리룩</a>
+            						</li>
+            						<% if current_user.nil? %>
+            						<% else %>
+            						<li>
+            							<a href="/home/mypage/<%= current_user.id %>" style="color:#841748;">
+            							<i><img style="height:30px;" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR9am2o0O8xCVJ9mSC1yxK39OqpQJ6Ki00y35VnfRQoL04eJhh6rYpFsQ" /></i>
+            							마이페이지</a>
+            						</li>
+            						<% end %>
+            					</ul>
+        				    </div>
+                        </div>
+                    </div>
+    		    </div>
+            </div>
+    <!-- 사이드바 종료 -->
+        <div class="col-sm-9 col-md-9 col-lg-9">
+            <div class ="col-md-12">
+            <!-- 프로필 콜 시작 -->
+            
+                
+                <div class="row">
+                            <div class="col-xs-12 col-lg-6 col-md-6">
+                            <div class="panel panel-default card" style="border:0px">
+                            <div class="panel-body">
+                                <div class="col-md-4">
+                                    <img style="border-radius:3%; height:120px; width:120px; margin-left:-10px;" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR25N-t7UILQMC2KH_bk2hSbUpYzIgdcI4ASGnXouiXdvvbLRb0">
+        					  		<div class="profile-usertitle-name" style ="padding-top:10px; text-align:center; font-size:15px">
+                					    (<%= @user.age %>, <span style="font-size:11px"><%= @user.job %></span>)
+                					</div>
+            					</div>
+            				    <div class="col-md-8">
+                				    <div class="profile-usermenu">
+                				    <h3>'<%= @user.nickname%>'의 SPEC</h3>
+                					    <ul class="nav" style="font-size:16px">
+                						    <li>
+                    							<span class="glyphicon glyphicon-play text-success"></span>
+                    							성별ㅣ<%=@user.sex%>
+                    						</li>
+                						    <li class="active">
+                							    <span class="glyphicon glyphicon-play text-info"></span>
+                							    키ㅣ<%=@contents.tall%>
+                    						</li>
+                    						<li>
+                    							<span class="glyphicon glyphicon-play text-warning"></span>
+                    							TOPㅣ<%=@contents.upsize %>
+                    						</li>
+                    						<li>
+                    							<span class="glyphicon glyphicon-play text-danger"></span>
+                    							BOTTOMㅣ<%=@contents.downsize%>
+                    						</li>
+                    				    </ul>
+                				    </div>
+            				    </div>
+        				    </div>  
+                            </div>
+                                <section class="thumbnail" style="border: 2px solid #F0F0F0; height:411px">    
+                                    <div style="text-align:left">
+                                        <p style="padding: 10px 10px 0px 10px;margin-bottom: -10px;"><span style="font-size:30px"><span style="color:#717272;" class="glyphicon glyphicon-ok"></span>&nbsp;설명&nbsp;</span>
+                                        <span style="font-size:15px"><%= @contents.title %></span></p>
+                                    </div>
+                                    <hr>
+                                    <div class="fluid">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                				<ul style="list-style-type: none; font-size:12px; color:grey">
+                                                   <li> HEAD </li><br><br>
+                                                   <li> TOP </li><br><br>
+                                                   <li> BOTTOM </li><br><br>
+                                                   <li> SHOES </li><br><br>
+                                                   <li> ACCESSORY </li><br><br>
+                                                   <li> ETC </li><br>
+                                                </ul>
+                                        </div>
+                                        <div class="col-md-9">
+                                                <ul style="list-style-type: none; font-size:12px">
+                                                   <li> <%= @contents.head %> </li><br><br>
+                                                   <li> <%= @contents.top %> </li><br><br>
+                                                   <li> <%= @contents.bottom %> </li><br><br>
+                                                   <li> <%= @contents.shoes %> </li><br><br>
+                                                   <li> <%= @contents.accessory %> </li><br><br>
+                                                   <li> <%= @contents.etc %> </li><br>
+                                                </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </section>
+                            </div>
+                        <div class="col-md-6">
+                            <div class="col-md-8">
+                                <span style="font-size:10px; color:grey">DATE</span>ㅣ<small><%= @contents.created_at.to_s.chomp("UTC") %></small>&nbsp;&nbsp;&nbsp;
+                                <span style="font-size:10px; color:grey">VIEW</span>ㅣ<small><%= @contents.viewcount %></small>
+                            </div>
+                            <div class="col-md-4">
+                            <!-- 삭제, 수정 버튼 -->
+                            <% if user_signed_in? %>
+                                <% if current_user.id == @contents.user_id %>
+                    				    <div class="profile-userbuttons" style="text-align:right; margin-top:-20px">        				        
+                				            <a href ="/uploadhelp/helpmodify/<%= @contents.id %>" type="button" class="btn btn-default btn-sm" style="margin-top:20px;">내용수정</a>
+                                            <a href ="/home/helpcontentdestroy/<%= @contents.id %>" type="button" class="btn btn-danger btn-sm" style="margin-top:20px;">삭제</a>
+                    				    </div>
+                				<% end %>
+                			<% else %>
+                			<% end %>
+            				</div>
+            				<hr style="margin-top:40px; margin-bottom:0px;">
+                            <!-- 삭제 수정 버튼 끝 -->
+                            <!-- 움직이는 사진 -->
+                            <section class="section-white">
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                  <!-- Indicators -->
+                                  <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                  </ol>
+                            
+                                  <!-- Wrapper for slides -->
+                              
+                                  <div class="carousel-inner">
+                                    <div class="item active">
+                                      <img class="detailshot" src="<%= @contents.my_image4.url %>" alt="...">
+                                      <div class="carousel-caption">
+                                        <h4><%= @contents.hashtag %></h4>
+                                      </div>
+                                    </div>
+                                    <% if @contents.my_image5.url.to_s == '' %>
+                                    <% else %>
+                                        <div class="item">
+                                          <img class="detailshot" src="<%= @contents.my_image5.url %>" alt="...">
+                                          <div class="carousel-caption">
+                                            <h4><%= @contents.hashtag %></h4>
+                                          </div>
+                                        </div>
+                                    <% end %>
+                                    <% if @contents.my_image6.url.to_s == '' %>
+                                    <% else %>
+                                        <div class="item">
+                                          <img class="detailshot" src="<%= @contents.my_image6.url %>" alt="...">
+                                          <div class="carousel-caption">
+                                            <h4><%= @contents.hashtag %></h4>
+                                          </div>
+                                        </div>
+                                    <% end %>
+                                  </div>
+                              
+                                  <!-- Controls -->
+                                  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                  </a>
+                                  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                  </a>
+                                </div>                        
+                            </section>
+                        <!-- 움직이는 사진 끝 -->
+                    	</div>
+    		</div>
+    		    <!--다른글 보기 시작 -->
+    		    
+                <!--다른글 보기 종료 -->
+                <hr style="margin-top:0px">
+            </div>
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- 댓글 박스-->
+            <div class="row">
+                <div class="panel panel-default" style="margin-left:30px; margin-right:30px; height:50px">
+                    <div class="panel-body">       
+                    <div class= "col-md-2">
+                        <% if current_user.nil? %>
+                        <p></p>
+                        <% else %>
+                        <%= current_user.nickname %>
+                        <%end %>
+                    </div>
+                    <div class="col-md-10">
+                        <% if current_user.nil? %>
+                            <form action="#" type="POST">
+                                <textarea disabled type="text" name="myreply" class="textarea">로그인해야 댓글 작성이 가능합니다</textarea>
+                                <div style="text-align:right">
+                                    <a href ="http://sorry-shkim6827.c9.io/users/sign_in" class ="btn">로그인하기</a>
+                                </div>
+                            </form>
+                        <% else %>
+                        
+                            <div class="row">
+    							<div class="status-upload">
+    								<form action="/home/dailyreply" type="POST" style="height:0px">
+    								    <input type ="hidden" name ="nickname" value = "<%= current_user.nickname %>">
+                                        <input type ="hidden" name ="user_id" value = "<%= current_user.id %>">
+                                        <input type ="hidden" name ="age" value = "<%= current_user.age %>">
+                                        <input type ="hidden" name ="job" value = "<%= current_user.job %>">
+                                        <input type ="hidden" name ="daily_id" value = "<%= @contents.id %>">
+    									<textarea class="textarea" placeholder="댓글을 남겨주세요" type="text" name="myreply"></textarea>
+    									<button type="submit" class="btn" style="background-color:#878787">댓글달기</button>
+    								</form>
+    									<!--<ul>
+    										<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+    										<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+    										<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+    										<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+    									</ul>-->
+    							</div><!-- Status Upload  -->
+    						</div><!-- Widget Area -->
+    				    <% end %>
+    				    
+    				    
+                    </div>   
+                </div>
+            </div>
+        </div>
+<!-- 댓글 박스 끝-->
+<!-- 댓글 피드 -->
+            <div class="row">
+                <div class="col-md-12">
+                    <% @contents.dailyreplies.each do |r| %>
+                        <div class ="row">
+                            <div class="panel" style="height: 35px; margin-left:30px; margin-right:30px">
+                                <div class ="col-md-10" style="padding-top:7px; font-size:16px">
+                                <span style="color:#1A1A50"><%= r.nickname %></span><span style="font-size:12px">(<%= r.age %>,<%= r.job %>)</span><span style="color:grey">ㅣ</span>
+                                <%= r.comment %>
+                                </div>
+                            <div class ="col-md-2" style="padding-top:3px">
+                                <% if current_user.nil? %>
+                                <% else %>
+                                    <% if current_user.id == r.user_id %>
+                                        <a style="height:27px; width:40%; font-size: 12px; margin-left: 20px;" class="btn btn-danger" href ="/home/dailydestroy/<%=r.id%>">삭제</a>
+                                        <a style="height:27px; width:40%; font-size: 12px;" class="btn btn-warning" href ="/home/dailymodify/<%=r.id%>">수정</a>
+                                    <% else %>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            </div>
+                        </div>
+                    <% end %>    
+                    <%= will_paginate @replies %>
+                </div>
+            </div>
+<!-- 댓글 피드 끝 -->
+
+
+        </div>
+    </div>  
+</div>

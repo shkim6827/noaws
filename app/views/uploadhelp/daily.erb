@@ -1,0 +1,115 @@
+<div class = "container">
+<div class ="row">
+    <br><br><br><br>
+    <div class ="col-md-3"></div>
+    <div class ="col-md-6">
+        <%= form_tag "/uploadhelp/daily2", enctype: "multipart/form-data", method: "post" do %>
+            <input type = "hidden" name ="user_id" value ="<%= current_user.id%>">
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                오늘의 LOOK 사진을 선택해주세요&nbsp;<small>최대 3개</small>
+            </h3>
+            <input type ="file" name ="image_file4" style="width:170px">
+            <input type ="file" name ="image_file5" style="width:170px">
+            <input type ="file" name ="image_file6" style="width:170px">
+            
+            <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                '#해쉬태그'로 룩에 대해 설명해주세요</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="hashtag" placeholder="#스트릿패션 #깔끔셔츠패션">
+            </div>
+            
+            <!-- 스타일 끗 신체 사이즈 시작 -->
+           <h3>
+                <img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>
+                신체 사이즈를 입력해주세요 
+            </h3>
+            <div class="form-group">
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <label>키</label>
+                        <input type="number" class="form-control" name="tall" placeholder="숫자만 입력해주세요(cm)">
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <label>몸무게</label>
+                        <input type="number" class="form-control" name="kg" placeholder="숫자만 입력해주세요(kg)">
+                    </div>
+                </div>
+                        <div class ="row" style ="height:17px;"></div>
+                <div class ="row">
+                    <div class ="col-md-5">
+                        <label>상의사이즈</label>
+                        <select class="form-control" id="upsize" name ="upsize">
+                            <option value="none">상의 사이즈</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXL">XXXL</option>
+                        </select>   
+                    </div>
+                    <div class ="col-md-1"></div>
+                    <div class ="col-md-5">
+                        <label>하의사이즈</label>
+                        <select class="form-control" id="downsize" name ="downsize">
+                            <option value="none">하의 사이즈</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                        </select>  
+                    </div>
+                </div>
+            </div>
+        <!-- 신체 사이즈 종료 -->
+        <!-- 옷 참고 사항 시작 -->
+            <div class="form-group">
+               <h3><img src =" http://postfiles12.naver.net/20150819_155/shkim6827_1439955934852P5RNt_PNG/check52.png?type=w3"/>&nbsp;옷 설명, 브랜드 등을 소개해주세요<small>굳이 다 안적어도 된답니다</small></h3>
+                <input type="text" class="form-control" name="head" placeholder ="HEAD(모자, 헤어 등)에 관해 설명해주세요">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="top" placeholder="TOP(상의)에 관해 설명해주세요">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="bottom" placeholder="BOTTOM(하의)에 관해 설명해주세요">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="shoes" placeholder="SHOES(신발)에 관해 설명해주세요">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="accessory" placeholder="ACCESSORY(악세서리)에 관해 설명해주세요">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="etc" placeholder="그 외 여러 아이템에 관해 설명해주세요">
+            </div>
+            <br>
+            <center>
+                <button class="btn btn-success">등록하기</button>
+                <a href ="/" class="btn btn-warning">돌아가기</a>
+            </center>
+        <% end %>
+    </div>
+    <div class ="col-md-3"></div>
+    </div> <!-- row end -->
+</div> <!-- container end -->
+
+
